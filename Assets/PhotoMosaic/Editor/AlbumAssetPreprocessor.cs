@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.IO;
 
-namespace PhotoMosaic
+namespace PhotoMosaicEditor
 {
     class AlbumAssetPreprocessor : AssetPostprocessor
     {

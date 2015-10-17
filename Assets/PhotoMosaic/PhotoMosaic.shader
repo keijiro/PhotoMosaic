@@ -1,4 +1,4 @@
-Shader "Hidden/PhotoMosaic/Mosaic"
+Shader "Hidden/PhotoMosaic"
 {
     Properties
     {
@@ -29,6 +29,8 @@ Shader "Hidden/PhotoMosaic/Mosaic"
         float b = floor(src.b * 16) / 16;
         float2 lut_uv = float2(src.r / 16 + b, src.g);
         half2 lut = tex2D(_LutTex, lut_uv).rg;
+
+        uv2 = uv2 * 0.9 + 0.05;
 
         half4 co = tex2D(_AlbumTex, lut + uv2 * float2(1.0/16, 1.0/3));
 
