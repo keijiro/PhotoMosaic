@@ -64,7 +64,13 @@ public class PhotoMosaic : MonoBehaviour
             _material.hideFlags = HideFlags.DontSave;
         }
 
+        var linear = QualitySettings.activeColorSpace == ColorSpace.Linear;
         var blockSize = Mathf.Max(_blockSize, 2.0f);
+
+        if (linear)
+            _material.EnableKeyword("COLORSPACE_LINEAR");
+        else
+            _material.DisableKeyword("COLORSPACE_LINEAR");
 
         _material.SetFloat("_BlockSize", blockSize);
         _material.SetTexture("_AlbumTex", _albumTexture);

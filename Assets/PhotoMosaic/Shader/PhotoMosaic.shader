@@ -32,6 +32,8 @@ Shader "Hidden/PhotoMosaic"
 
     CGINCLUDE
 
+    #pragma multi_compile COLORSPACE_SRGB COLORSPACE_LINEAR
+
     #include "UnityCG.cginc"
 
     sampler2D _MainTex;
@@ -51,7 +53,11 @@ Shader "Hidden/PhotoMosaic"
 
         // sample the source pixel with the downsampled uv coordinate
         float2 uv_down = trunc(i.uv / block_size) * block_size;
-        half4 src = tex2D(_MainTex, uv_down);
+        half3 src = tex2D(_MainTex, uv_down).rgb;
+
+#if COLORSPACE_LINEAR
+        src = LinearToGammaSpace(src);
+#endif
 
         // 4-bit quantized blue component level
         float src_b16 = floor(src.b * 16) / 16;
@@ -67,7 +73,11 @@ Shader "Hidden/PhotoMosaic"
         float album_aspect = _AlbumTex_TexelSize.y * _AlbumTex_TexelSize.z;
         float2 uv_photo = uv_block * float2(1.0 / 16, album_aspect / 16);
 
-        return tex2D(_AlbumTex, lut + uv_photo);
+        half4 co = tex2D(_AlbumTex, lut + uv_photo);
+#if COLORSPACE_LINEAR
+        co.rgb = GammaToLinearSpace(co.rgb);
+#endif
+        return co;
     }
 
     ENDCG
