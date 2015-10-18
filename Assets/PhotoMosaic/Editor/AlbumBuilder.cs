@@ -48,7 +48,7 @@ namespace PhotoMosaicEditor
 
         static void ExportAndDestroy(Texture2D texture, string filename)
         {
-            var path = Path.Combine("Assets/PhotoMosaic", filename);
+            var path = Path.Combine("Assets/PhotoMosaic/Texture", filename);
             File.WriteAllBytes(path, texture.EncodeToPNG());
             Object.DestroyImmediate(texture);
         }
@@ -108,8 +108,8 @@ namespace PhotoMosaicEditor
             return texture;
         }
 
-        [MenuItem("Assets/PhotoMosaic/Build Album")]
-        static void BuildAlbum()
+        [MenuItem("Assets/PhotoMosaic/Update Album")]
+        static void UpdateAlbum()
         {
             var photos = LoadPhotos();
             var rowCount = (photos.Length + _photosPerRow - 1) / _photosPerRow;

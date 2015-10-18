@@ -44,7 +44,6 @@ namespace PhotoMosaicEditor
             {
                 importer.textureType = TextureImporterType.GUI;
                 importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
-                importer.maxTextureSize = 4096;
                 importer.filterMode = FilterMode.Point;
             }
         }

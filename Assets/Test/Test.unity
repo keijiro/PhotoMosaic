@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockSize: 32
-  _shader: {fileID: 4800000, guid: 0dbe00ea2101c4c1787900da2558b635, type: 3}
   _albumTexture: {fileID: 2800000, guid: e8d40f2ebd9314514a704d4ec62f4e10, type: 3}
   _lutTexture: {fileID: 2800000, guid: 3e47c4ea5410341bd8c2238923ee8f0a, type: 3}
+  _shader: {fileID: 4800000, guid: 0dbe00ea2101c4c1787900da2558b635, type: 3}
 --- !u!81 &650202685
 AudioListener:
   m_ObjectHideFlags: 0
