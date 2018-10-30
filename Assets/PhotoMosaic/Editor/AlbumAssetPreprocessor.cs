@@ -35,15 +35,17 @@ namespace PhotoMosaicEditor
 
             if (CheckIfPhoto())
             {
-                importer.textureType = TextureImporterType.GUI;
-                importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+                importer.textureType = TextureImporterType.Default;
+                importer.textureCompression = TextureImporterCompression.Uncompressed;
                 importer.maxTextureSize = 256;
                 importer.isReadable = true;
             }
             else if (CheckIfLut())
             {
-                importer.textureType = TextureImporterType.GUI;
-                importer.textureFormat = TextureImporterFormat.AutomaticTruecolor;
+                importer.textureType = TextureImporterType.Default;
+                importer.textureCompression = TextureImporterCompression.Uncompressed;
+                importer.sRGBTexture = false;
+                importer.mipmapEnabled = false;
                 importer.filterMode = FilterMode.Point;
             }
         }
